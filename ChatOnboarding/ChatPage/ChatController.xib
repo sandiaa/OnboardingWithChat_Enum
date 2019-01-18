@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatController" customModule="ChatOnboarding" customModuleProvider="target">
+            <connections>
+                <outlet property="chatCollectionView" destination="pCp-DJ-gUn" id="4Qe-QW-hOM"/>
+                <outlet property="lcCollectionViewBottomSpace" destination="M8H-Av-YDD" id="s8r-P8-GlE"/>
+                <outlet property="textFieldBaseView" destination="fl1-eC-k7v" id="x5J-hb-uZt"/>
+                <outlet property="txtField" destination="MsV-PA-Pld" id="JoY-i2-8fK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0H-R3-jvO">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okb-Ir-BoN">
+                            <rect key="frame" x="165" y="50" width="84.333333333333314" height="24"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="86" id="6sv-8m-dQ6"/>
+                        <constraint firstItem="okb-Ir-BoN" firstAttribute="centerX" secondItem="A0H-R3-jvO" secondAttribute="centerX" id="7xS-4j-pEC"/>
+                        <constraint firstAttribute="bottom" secondItem="okb-Ir-BoN" secondAttribute="bottom" constant="12" id="dw1-fY-QwF"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pCp-DJ-gUn">
+                    <rect key="frame" x="0.0" y="86" width="414" height="810"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="asC-Ix-kL5">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fl1-eC-k7v">
+                    <rect key="frame" x="0.0" y="896" width="414" height="60"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MsV-PA-Pld">
+                            <rect key="frame" x="18" y="12" width="378" height="36"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="MsV-PA-Pld" firstAttribute="leading" secondItem="fl1-eC-k7v" secondAttribute="leading" constant="18" id="4T8-qu-ZbQ"/>
+                        <constraint firstAttribute="trailing" secondItem="MsV-PA-Pld" secondAttribute="trailing" constant="18" id="Adg-Pt-ZbM"/>
+                        <constraint firstAttribute="bottom" secondItem="MsV-PA-Pld" secondAttribute="bottom" constant="12" id="JgR-Zw-FG5"/>
+                        <constraint firstAttribute="height" constant="60" id="KH4-9O-wII"/>
+                        <constraint firstItem="MsV-PA-Pld" firstAttribute="top" secondItem="fl1-eC-k7v" secondAttribute="top" constant="12" id="Oen-Kt-aXc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="A0H-R3-jvO" secondAttribute="trailing" id="5tV-D3-NH4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pCp-DJ-gUn" secondAttribute="trailing" id="E6a-ee-z5S"/>
+                <constraint firstAttribute="bottom" secondItem="pCp-DJ-gUn" secondAttribute="bottom" id="M8H-Av-YDD"/>
+                <constraint firstItem="A0H-R3-jvO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Oaj-zj-BTd"/>
+                <constraint firstItem="pCp-DJ-gUn" firstAttribute="top" secondItem="A0H-R3-jvO" secondAttribute="bottom" id="VGp-oA-ILS"/>
+                <constraint firstItem="fl1-eC-k7v" firstAttribute="top" secondItem="pCp-DJ-gUn" secondAttribute="bottom" id="eon-mG-PJp"/>
+                <constraint firstItem="A0H-R3-jvO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pXM-g9-Ean"/>
+                <constraint firstItem="pCp-DJ-gUn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pkJ-9H-5gb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fl1-eC-k7v" secondAttribute="trailing" id="tYY-1O-7Gb"/>
+                <constraint firstItem="fl1-eC-k7v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uRV-QO-qfN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
+        </view>
+    </objects>
+</document>
