@@ -21,7 +21,11 @@ class BotCell: UICollectionViewCell {
     func populateWith(chatType : ChatType) {
         textLabel.text = chatType.getChatText()
         
-        let shadowPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: baseView.bounds.width, height: baseView.bounds.height), cornerRadius: 10)
+        let lblSize = textLabel.sizeThatFits(CGSize(width: UIScreen.main.bounds.width - 130, height: CGFloat.infinity))
+        let returnigSize = CGSize(width:max(lblSize.width + 20, 100), height: max(lblSize.height + 20, 50))
+        
+        
+        let shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: returnigSize.width, height: returnigSize.height), cornerRadius: 10)
         let shadowColor = UIColor.black.withAlphaComponent(0.1)
         
         baseView.addShadowWith(shadowPath: shadowPath.cgPath, shadowColor: shadowColor.cgColor, shadowOpacity: 1.0, shadowRadius: 10, shadowOffset: CGSize(width: 3, height: 3))

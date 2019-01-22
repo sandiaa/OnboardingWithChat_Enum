@@ -18,6 +18,15 @@ extension String {
         }
         return false;
     }
+    var isName:Bool {
+            let RegEx = "^\\w{7,18}$"
+            let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        if (!self.containsEmoji && Test.evaluate(with: self)) {
+            return true;
+        }
+        return false;
+    }
+    
     
     var isDecimalOnly:Bool {
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: self))
@@ -96,6 +105,10 @@ extension String {
         
         return chars
     }
+    
+    var isDob : Bool {
+        return true
+    }
 }
 
 extension UnicodeScalar {
@@ -121,5 +134,42 @@ extension UnicodeScalar {
     
     var isZeroWidthJoiner: Bool {
         return value == 8205
+    }
+}
+extension String {
+//    func verifyForPassword() -> (Bool, String?) {
+//        if count == 0 {
+//            return (false, "porfavor ingrese una contraseña")
+//        }
+//        if count < 6 || containsEmoji {
+//            return (false,"Por favor introduce una contraseña válida")
+//        }
+//        return(true, nil)
+//    }
+    
+//    func verifyForTabellaConfirmPassword() -> (Bool, String?) {
+//
+//        if count == 0 {
+//            return (false, "Por favor confirme la contraseña")
+//        }
+//
+//        if containsEmoji {
+//            return (false, "Por favor introduce una contraseña válida")
+//        }
+//
+//        if count < 6 {
+//            return (false, "Por favor introduce una contraseña válida")
+//        }
+//        return(true, nil)
+//    }
+    
+    func checkIfBothAreSame(firstString : String, otherString:String)->Bool {
+
+      //  if firstString.trim().uppercased() == otherString.trim().uppercased() {
+        if firstString.trim() == otherString.trim() {
+            return true
+        }
+
+        return false
     }
 }

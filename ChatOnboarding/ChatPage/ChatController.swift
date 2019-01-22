@@ -7,28 +7,48 @@
 //
 
 import UIKit
+import WebKit
 
 class ChatController: UIViewController {
 
+    @IBOutlet weak var webViewBackButton: UIButton!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var chatCollectionView: UICollectionView!
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var textFieldBaseView: UIView!
     
     @IBOutlet weak var lcCollectionViewBottomSpace: NSLayoutConstraint!
     
+    lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        return picker
+    }()
+    
     var dataSource = [ChatType]()
     var currentSuggestion = [ChatType]()
-    
+    let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(dismissPicker))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         dataSource.append(ChatType.hi)
         setupColletionView()
         processLastChat()
         setUpView()
     }
-    
+
+    @objc func dismissPicker() {
+        view.endEditing(true)
+        let selectedDate = datePicker.date
+        let registerDate = getDateInChatFormat(date: selectedDate)
+        UserDefaults.standard.set((registerDate), forKey: REGISTERED_SIGNUP_DOB)
+        dataSource.append(.signupRegisteredDob)
+        txtField.isHidden = false
+        textFieldBaseView.isHidden = false
+        processLastChat()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -88,10 +108,23 @@ class ChatController: UIViewController {
             }
             else {
                 txtField.keyboardType = chatType.getKeyboardType()
-                txtField.placeholder = chatType.getChatText()
+                txtField.placeholder = chatType.getPlaceholderText()
                 txtField.isSecureTextEntry = chatType.isTextFieldSecure()
+                txtField.returnKeyType = .done
                 
-                if chatType == .wrongSignInEmail {
+                if chatType == .signupDob {
+                    txtField.inputAccessoryView = toolBar
+                    txtField.isHidden = true
+                    textFieldBaseView.isHidden = true
+                    datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -15, to: Date())
+                    txtField.inputView = datePicker
+                }
+                
+                if chatType == .wrongSignInEmail || chatType == .signinEmojiPassword || chatType == .signinInvalidPassword ||
+                    chatType == .wrongSignupName || chatType == .wrongSignupEmail || chatType == .signupEmojiPassword ||
+                    chatType == .signupInvalidPassword || chatType == .signupConfirmPassword || chatType == .wrongConfirmPassword ||
+                    chatType == .signupWrongDob || chatType == .wrongMobile || chatType == .declineSelected || chatType == .okay
+                {
                     var indexPathsToInsert = [IndexPath]()
                     var indexPathsToDelete = [IndexPath]()
                     
@@ -124,19 +157,20 @@ class ChatController: UIViewController {
                 indexPathsToDelete.append(userResponseIndexpath)
             }
             let botResponse = chatType.getBotResponse()
-            dataSource.append(botResponse)
-            let botResponseIndexpath = IndexPath(row: dataSource.count-1, section: 0)
-            indexPathsToInsert.append(botResponseIndexpath)
-            
-            
-            
+            if botResponse != .none {
+                dataSource.append(botResponse)
+                let botResponseIndexpath = IndexPath(row: dataSource.count-1, section: 0)
+                indexPathsToInsert.append(botResponseIndexpath)
+            }
             
             (self.chatCollectionView.collectionViewLayout as! SpringyFlowLayout).dynamicAnimator = nil
             chatCollectionView.performBatchUpdates({
                 self.chatCollectionView.deleteItems(at: indexPathsToDelete)
                 self.chatCollectionView.insertItems(at: indexPathsToInsert)
             }) { (finished) in
-                self.processLastChat()
+                if botResponse != .none {
+                    self.processLastChat()
+                }
             }
         }
     }
@@ -148,7 +182,24 @@ class ChatController: UIViewController {
             chatCollectionView.performBatchUpdates({
                 self.chatCollectionView.insertItems(at: [suggestionIndexPath])
             }) { (finished) in
+                if self.chatCollectionView.contentSize.height > self.chatCollectionView.frame.height {
+                    self.chatCollectionView.setContentOffset(CGPoint(x: 0, y: self.chatCollectionView.contentSize.height - (self.chatCollectionView.frame.height - 30)), animated: false)
+                }
             }
         }
+    }
+    func setupWebView() {
+        webView.isHidden = false
+        webViewBackButton.isHidden = false
+        let url = URL(string: "https://www.google.com")
+        let request = URLRequest(url: url!)
+        webView.load(request)
+
+    }
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        webView.isHidden = true
+        webViewBackButton.isHidden = true
+        
+      
     }
 }

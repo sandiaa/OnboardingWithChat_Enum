@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FCB33E7B21F6F0980098A4A1 /* DatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB33E7A21F6F0980098A4A1 /* DatePickerExtension.swift */; };
 		FCEF60BF21F1AE5E006C7FCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF60BE21F1AE5E006C7FCF /* AppDelegate.swift */; };
 		FCEF60C121F1AE5E006C7FCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF60C021F1AE5E006C7FCF /* ViewController.swift */; };
 		FCEF60C421F1AE5E006C7FCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCEF60C221F1AE5E006C7FCF /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FCB33E7A21F6F0980098A4A1 /* DatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerExtension.swift; sourceTree = "<group>"; };
 		FCEF60BB21F1AE5E006C7FCF /* ChatOnboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatOnboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEF60BE21F1AE5E006C7FCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCEF60C021F1AE5E006C7FCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEF60EB21F1B63C006C7FCF /* UIColorExtension.swift */,
+				FCB33E7A21F6F0980098A4A1 /* DatePickerExtension.swift */,
 				FCEF60F921F1E9D9006C7FCF /* StringExtension.swift */,
 				FCEF60EA21F1B63C006C7FCF /* UIView+Extension.swift */,
 			);
@@ -259,6 +262,7 @@
 				FCEF60E121F1B226006C7FCF /* UserCell.swift in Sources */,
 				FCEF60E621F1B371006C7FCF /* ChatControllerCollectionViewExtension.swift in Sources */,
 				FCEF60F421F1B8D1006C7FCF /* AllSuggestionsCell.swift in Sources */,
+				FCB33E7B21F6F0980098A4A1 /* DatePickerExtension.swift in Sources */,
 				FCEF60FA21F1E9D9006C7FCF /* StringExtension.swift in Sources */,
 				FCEF60F821F1B966006C7FCF /* centerAlignedFlowLayout.swift in Sources */,
 				FCEF60E421F1B333006C7FCF /* SpringLayout.swift in Sources */,
@@ -411,6 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSB3FLWF7Q;
 				INFOPLIST_FILE = ChatOnboarding/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -428,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSB3FLWF7Q;
 				INFOPLIST_FILE = ChatOnboarding/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

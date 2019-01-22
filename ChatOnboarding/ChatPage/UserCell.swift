@@ -11,6 +11,8 @@ import UIKit
 class UserCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     
+    @IBOutlet weak var width: NSLayoutConstraint!
+
     @IBOutlet weak var baseView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +20,15 @@ class UserCell: UICollectionViewCell {
     }
     
     func populateWith(chatType : ChatType) {
-        textLabel.text = chatType.getChatText()
+        if chatType == .signupRegisteredDob {
+            print("chatType.getChatText() = ",chatType.getChatText())
+            textLabel.attributedText = chatType.modifyText(txt: chatType.getChatText())
+            textLabel.numberOfLines = 0
+         }
+        else {
+            textLabel.text = chatType.getChatText()
+        }
+    
 
         layoutIfNeeded()
     }

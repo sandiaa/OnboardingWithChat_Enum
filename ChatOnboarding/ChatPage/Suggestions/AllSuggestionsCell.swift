@@ -74,5 +74,6 @@ extension AllSuggestionsCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedSuggestion = allSuggestions[indexPath.row]
         delegate?.didSelectSuggestion(suggestion: selectedSuggestion)
+
     }
 }
